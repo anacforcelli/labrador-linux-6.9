@@ -15,7 +15,7 @@
 	};
 	
 	aliases {
-
+		serial3 = &uart3;
 	};
 	
 	reserved-memory {
@@ -351,6 +351,7 @@
 			status = "okay";
 		};
 		*/
+		
 		timer: timer@e024c000 {
 			compatible = "caninos,k7-timer";
 			reg = <0x0 0xe024c000 0x0 0x4000>;
@@ -358,25 +359,33 @@
 			interrupt-names = "timer1";
 			status = "okay";
 		};
-		/*
+		
+		dummyclk: dummyclk {
+			compatible = "fixed-clock";
+			#clock-cells = <0>;
+			clock-frequency = <921600>;
+			status = "okay";
+		};
+		
 		uart0: serial@e0120000 {
 			compatible = "caninos,k7-uart", "caninos,early-uart";
 			reg = <0x0 0xe0120000 0x0 0x2000>;
-			clocks = <&cmu CLK_UART0>;
+			clocks = <&dummyclk>;
 			clock-names = "uart";
-			resets = <&rst RST_UART0>;
-			reset-names = "uart";
+			// resets = <&rst RST_UART0>;
+			// reset-names = "uart";
 			interrupts = <GIC_SPI 29 IRQ_TYPE_LEVEL_HIGH>;
-			pinctrl-names = "default", "extio";
-			pinctrl-0 = <&uart0_state_gpio>;
-			pinctrl-1 = <&uart0_state_extio>;
+			pinctrl-names = "default"; //, "extio";
+			pinctrl-0 = <>;
+			// pinctrl-0 = <&uart0_state_gpio>;
+			// pinctrl-1 = <&uart0_state_extio>;
 			status = "disabled";
 		};
 		
 		uart1: serial@e0122000 {
 			compatible = "caninos,k7-uart", "caninos,early-uart";
 			reg = <0x0 0xe0122000 0x0 0x2000>;
-			clocks = <&cmu CLK_UART1>;
+			clocks = <&dummyclk>;
 			clock-names = "uart";
 			interrupts = <GIC_SPI 30 IRQ_TYPE_LEVEL_HIGH>;
 			pinctrl-names = "default";
@@ -387,24 +396,17 @@
 		uart2: serial@e0124000 {
 			compatible = "caninos,k7-uart", "caninos,early-uart";
 			reg = <0x0 0xe0124000 0x0 0x2000>;
-			clocks = <&cmu CLK_UART2>;
+			clocks = <&dummyclk>;
 			clock-names = "uart";
-			resets = <&rst RST_UART2>;
-			reset-names = "uart";
+			//resets = <&rst RST_UART2>;
+			//reset-names = "uart";
 			interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH>;
 			pinctrl-names = "default";
 			pinctrl-0 = <>;
 			status = "disabled";
 		};
-		*/
-
 		
-		dummyclk: dummyclk {
-			compatible = "fixed-clock";
-			#clock-cells = <0>;
-			clock-frequency = <921600>;
-			status = "okay";
-		};
+		
 
 		uart3: serial@e0126000 {
 			compatible = "caninos,k7-uart", "caninos,early-uart";
@@ -414,16 +416,16 @@
 			//resets = <&rst RST_UART3>;
 			//reset-names = "uart";
 			interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
-			//pinctrl-names = "default";
-			//pinctrl-0 = <>;
+			pinctrl-names = "default";
+			pinctrl-0 = <>;
 			status = "okay";
 		};
 
-		/*
+		
 		uart4: serial@e0128000 {
 			compatible = "caninos,k7-uart", "caninos,early-uart";
 			reg = <0x0 0xe0128000 0x0 0x2000>;
-			clocks = <&cmu CLK_UART4>;
+			clocks = <&dummyclk>;
 			clock-names = "uart";
 			interrupts = <GIC_SPI 33 IRQ_TYPE_LEVEL_HIGH>;
 			pinctrl-names = "default";
@@ -434,7 +436,7 @@
 		uart5: serial@e012a000 {
 			compatible = "caninos,k7-uart", "caninos,early-uart";
 			reg = <0x0 0xe012a000 0x0 0x2000>;
-			clocks = <&cmu CLK_UART5>;
+			clocks = <&dummyclk>;
 			clock-names = "uart";
 			interrupts = <GIC_SPI 34 IRQ_TYPE_LEVEL_HIGH>;
 			pinctrl-names = "default";
@@ -445,7 +447,7 @@
 		uart6: serial@e012c000 {
 			compatible = "caninos,k7-uart", "caninos,early-uart";
 			reg = <0x0 0xe012c000 0x0 0x2000>;
-			clocks = <&cmu CLK_UART6>;
+			clocks = <&dummyclk>;
 			clock-names = "uart";
 			interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
 			pinctrl-names = "default";

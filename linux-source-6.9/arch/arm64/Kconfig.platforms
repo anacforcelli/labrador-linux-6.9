@@ -8,6 +8,14 @@ config ARCH_ACTIONS
 	help
 	  This enables support for the Actions Semiconductor S900 SoC family.
 
+
+config ARCH_CANINOS
+        bool "Caninos SoC Platform"
+        select CANINOS_TIMER
+        select PINCTRL
+        help
+          This enables support for the Caninos Labrador board family.
+
 config ARCH_SUNXI
 	bool "Allwinner sunxi 64-bit SoC Family"
 	select ARCH_HAS_RESET_CONTROLLER
@@ -93,14 +101,6 @@ config ARCH_BITMAIN
 	bool "Bitmain SoC Platforms"
 	help
 	  This enables support for the Bitmain SoC Family.
-
-
-config ARCH_CANINOS
-        bool "Caninos SoC Platform"
-        select CANINOS_TIMER
-        select PINCTRL
-        help
-          This enables support for the Caninos Labrador board family.
 
 config ARCH_EXYNOS
 	bool "Samsung Exynos SoC family"

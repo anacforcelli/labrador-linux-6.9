@@ -245,6 +245,16 @@ config SERIAL_CANINOS
           Say 'Y' here if you wish to use the on-board serial port.
           Otherwise, say 'N'.
 
+config SERIAL_CANINOS_CONSOLE
+	bool "Console on Caninos Labrador serial port"
+	depends on SERIAL_CANINOS=y
+	select SERIAL_CORE_CONSOLE
+	select SERIAL_EARLYCON
+	default y
+	help
+	  Say 'Y' here if you wish to use Caninos Labrador UART
+	  as the system console.
+
 config SERIAL_SAMSUNG
 	tristate "Samsung SoC serial support"
 	depends on PLAT_SAMSUNG || ARCH_S5PV210 || ARCH_EXYNOS || ARCH_APPLE || ARCH_ARTPEC || COMPILE_TEST
