@@ -21,6 +21,7 @@ obj-$(CONFIG_USB_FOTG210)	+= fotg210/
 
 obj-$(CONFIG_USB_MON)		+= mon/
 obj-$(CONFIG_USB_MTU3)		+= mtu3/
+obj-$(CONFIG_USB_CANINOS)       += caninos/
 
 obj-$(CONFIG_USB_PCI)		+= host/
 obj-$(CONFIG_USB_EHCI_HCD)	+= host/

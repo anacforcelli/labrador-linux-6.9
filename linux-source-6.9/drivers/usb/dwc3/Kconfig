@@ -189,4 +189,12 @@ config USB_DWC3_RTK
 	  or dual-role mode.
 	  Say 'Y' or 'M' if you have such device.
 
+config USB_DWC3_CANINOS
+	tristate "Caninos Platform"
+	depends on ARCH_CANINOS
+	default USB_DWC3
+	help
+	  Support Caninos Core 3.X with DesignWare Core USB3 IP.
+	  Say 'Y' or 'M' here if you have one such device
+
 endif

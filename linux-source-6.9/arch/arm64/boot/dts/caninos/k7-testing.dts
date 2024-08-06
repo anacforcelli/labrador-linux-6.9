@@ -28,9 +28,9 @@
                 serial5 = &uart5;
                 serial6 = &uart6;
 
-                //mmc0 = &mmc0;
-                //mmc1 = &mmc1;
-                //mmc2 = &mmc2;
+                mmc0 = &mmc0;
+                mmc1 = &mmc1;
+                mmc2 = &mmc2;
 
                 //i2c0 = &i2c0;
                 //i2c1 = &i2c1;
@@ -185,7 +185,7 @@
 			#reset-cells = <1>;
 			status = "okay";
 		};
-		/*
+		
 		dma: dma-controller@e0230000 {
 			compatible = "caninos,k7-dma";
 			reg = <0 0xe0230000 0 0x1000>;
@@ -288,7 +288,7 @@
 				groups = "sdio2_grp";
 			};
 		};
-		
+		/*
 		pwm: pwm@e01b0000 {
 			compatible = "caninos,k7-pwm";
 			reg = <0 0xe01b0000 0 0x1000>;
@@ -328,7 +328,7 @@
 			reset-names = "usb2h1";
 			status = "okay";
 		};
-		
+		*/
 		sps: power-domain@e01b0100 {
 			compatible = "caninos,k7-sps";
 			reg = <0 0xe01b0100 0 0x100>;
@@ -336,6 +336,7 @@
 			status = "okay";
 		};
 		
+		/*
 		sound@e0166000 {
 			compatible = "caninos,sndcard";
 			reg = <0x0 0xe0166000 0x0 0x34>;
@@ -410,10 +411,9 @@
 			resets = <&rst RST_UART0>;
 			reset-names = "uart";
 			interrupts = <GIC_SPI 29 IRQ_TYPE_LEVEL_HIGH>;
-			pinctrl-names = "default"; //, "extio";
-			pinctrl-0 = <>;
-			// pinctrl-0 = <&uart0_state_gpio>;
-			// pinctrl-1 = <&uart0_state_extio>;
+			pinctrl-names = "default", "extio";
+			pinctrl-0 = <&uart0_state_gpio>;
+			pinctrl-1 = <&uart0_state_extio>;
 			status = "disabled";
 		};
 		
@@ -488,7 +488,7 @@
 			pinctrl-0 = <>;
 			status = "disabled";
 		};
-		/*
+		
 		mmc0: mmc@e0210000 {
 			compatible = "caninos,k7-mmc";
 			reg = <0x0 0xe0210000 0x0 0x40>;
@@ -533,7 +533,7 @@
 			pinctrl-0 = <&sdio2_state_def>;
 			status = "okay";
 		};
-		
+		/*
 		i2c0: i2c@e0170000 {
 			compatible = "caninos,k7-i2c";
 			reg = <0 0xe0170000 0 0x1000>;
@@ -676,7 +676,7 @@
 				};
 			};
 		};
-		
+		*/
 		usb2_phy: usb2phy@e040ce00 {
 			compatible = "actions,s700-usb2phy";
 			reg = <0 0xe040ce00 0 0x4>;
@@ -716,6 +716,6 @@
 				dr_mode = "host";
 				usb-phy = <&usb2_phy>, <&usb3_phy>;
 			};
-		};*/
+		};
 	};
 };
